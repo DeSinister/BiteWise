@@ -1,6 +1,5 @@
 anthropic==0.55.0
-Flask==1.1.2
-Pillow==9.2.0
+Flask==2.1.0
 Pillow==11.2.1
 pyzxing==1.0.2
 Requests==2.32.4
