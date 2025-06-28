@@ -1,0 +1,546 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="upload-main">
+    <div class="container">
+        <div class="upload-content">
+            <div class="upload-header">
+                <div class="upload-badge">
+                    <i class="fas fa-camera"></i>
+                    <span>AI-Powered Analysis</span>
+                </div>
+                <!-- <h1>Scan Your Food Item</h1>
+                <p>Get instant health, nutrition, and environmental insights for any food item</p> -->
+            </div>
+        </div>
+    </div>    
+    <section class="step-section align-section">
+        <div class="container">
+            <div class="step-content reverse">
+                <div class="step-visual">
+                    <div class="alignment-demo">
+                        <div class="phone-frame">
+                            <div class="alignment-screen">
+                                <div class="alignment-guide">
+                                    <div class="box-guide">
+                                        <div class="guide-corners">
+                                            <div class="guide-corner"></div>
+                                            <div class="guide-corner"></div>
+                                            <div class="guide-corner"></div>
+                                            <div class="guide-corner"></div>
+                                        </div>
+                                        <div class="barcode-target">
+                                            <div class="target-barcode">
+                                                <div class="target-bars"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="alignment-status">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Perfect Alignment</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alignment-tips">
+                            <div class="tip-item">
+                                <i class="fas fa-crosshairs"></i>
+                                <span>Center the barcode</span>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-sun"></i>
+                                <span>Ensure good lighting</span>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-hand-paper"></i>
+                                <span>Hold steady for 2 seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-text">
+                    <div class="step-number"></div>
+                    <h2 class="step-title"> <i class="fas fa-search"></i> Find Your Food Item</h2>
+                    <p class="step-description">
+                        This app uses barcodes (12–14 digits printed on food packaging, e.g., <code>0065700100276</code>) to retrieve food information. You can provide a barcode using one of the following methods:
+                      </p>
+                      <ul class="step-description">
+                        <li><i class="fas fa-camera"></i> <strong>Scan the barcode</strong> using your device’s camera. <em>Ensure it’s clearly visible and well-aligned for the best results.</em></li>
+                        <li><i class="fas fa-image"></i> <strong>Upload a photo</strong> of the barcode.</li>
+                        <li><i class="fas fa-keyboard"></i> <strong>Enter the barcode manually.</strong></li>
+                      </ul>
+                      <p class="step-description">
+                        Alternatively, you can <i class="fas fa-search"></i> <strong>search for an item by name</strong> if you don’t have the barcode.
+                      </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="step-section personalization-section">
+        <div class="container">
+            <div class="step-content">
+                <div class="step-text">
+                    <h2 class="step-title">Personalize Your Experience</h2>
+                    <p class="step-description">Add your personal information to get tailored nutritional insights and recommendations that match your health goals and dietary preferences.</p>
+                    <div class="personalization-features">
+                        <div class="feature-item">
+                            <i class="fas fa-user-cog feature-icon"></i>
+                            <div class="feature-content">
+                                <h4>Profile Setup</h4>
+                                <p>Age, weight, height, and activity level</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-heart feature-icon"></i>
+                            <div class="feature-content">
+                                <h4>Health Preferences</h4>
+                                <p>Pick foods based on health, and quality.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-utensils feature-icon"></i>
+                            <div class="feature-content">
+                                <h4>Diet Preferences</h4>
+                                <p>Choose your eating style and ingredients to avoid.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-exclamation-triangle feature-icon"></i>
+                            <div class="feature-content">
+                                <h4>Allergies & Intolerances</h4>
+                                <p>Mark foods that may trigger a reaction.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-visual">
+                    <div class="personalization-demo">
+                        <div class="profile-form-mockup">
+                            <div class="form-header">
+                                <h3>Personal Profile</h3>
+                                <div class="progress-bar2">
+                                    <div class="progress-fill2"></div>
+                                </div>
+                            </div>
+                            <div class="form-sections">
+                                <div class="form-section active" data-section="basic">
+                                    <div class="section-title">Basic Info</div>
+                                    <div class="form-fields">
+                                        <div class="field-group">
+                                            <label>Allergies</label>
+                                            <div class="input-field">Shrimp, Nuts</div>
+                                        </div>
+                                        <div class="field-group">
+                                            <label>Intolerances</label>
+                                            <div class="input-field">Dairy</div>
+                                        </div>
+                                        <div class="field-group">
+                                            <label>Medications</label>
+                                            <div class="input-field">Antibiotics</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-section" data-section="goals">
+                                    <div class="section-title">Health Goals</div>
+                                    <div class="goal-options">
+                                        <div class="goal-option selected">
+                                            <i class="fas fa-weight"></i>
+                                            Weight Loss
+                                        </div>
+                                        <div class="goal-option">
+                                            <i class="fas fa-dumbbell"></i>
+                                            Muscle Gain
+                                        </div>
+                                        <div class="goal-option">
+                                            <i class="fas fa-balance-scale"></i>
+                                            Maintain
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-section" data-section="diet">
+                                    <div class="section-title">Dietary Preferences</div>
+                                    <div class="diet-tags">
+                                        <div class="diet-tag active">Vegetarian</div>
+                                        <div class="diet-tag">Gluten-Free</div>
+                                        <div class="diet-tag">Low-Sodium</div>
+                                        <div class="diet-tag active">Organic</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-navigation">
+                                <button class="nav-btn prev-btn">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="step-indicators">
+                                    <div class="step-dot active"></div>
+                                    <div class="step-dot"></div>
+                                    <div class="step-dot"></div>
+                                </div>
+                                <button class="nav-btn next-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="personalization-benefits">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <div class="benefit-text">
+                                    <h4>Targeted Recommendations</h4>
+                                    <p>Get food suggestions aligned with your goals</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="benefit-text">
+                                    <h4>Allergy Alerts</h4>
+                                    <p>Instant warnings for your dietary restrictions</p>
+                                </div>
+                            </div>
+                            <!-- <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div> -->
+                                <!-- <div class="benefit-text">
+                                    <h4>Progress Insights</h4>
+                                    <p>Track your nutritional journey over time</p>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+    <div class="container">
+        <div class="upload-content">
+            <div class="upload-form-container">
+                <form method="POST" action="/upload" enctype="multipart/form-data" class="upload-form" id="uploadForm">
+                    <div class="card-in-card">
+
+                {% if error %}
+                <p class="error-message" style="color: #c0392b; margin-top: 1rem; font-weight: bold;">
+                    {{ error }}
+                </p>
+                {% endif %}
+
+                <div class="dashboard-form-header">
+                    <h3 class="dashboard-box"><i class="fas fa-bread-slice"></i></h3>
+                    <h3>Find your Food</h3>
+                    </div>
+                    <br>
+                    <div class="upload-zone" id="uploadZone">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>Drag & Drop Your Food Image</h3>
+                        <p>or click to browse files</p>
+                        <input type="file" name="photo" id="photoInput" accept="image/*" hidden>
+                        <div class="upload-formats">
+                            <span>Supports: JPG, PNG, WEBP</span>
+                        </div>
+                    </div>
+                    <div class="upload-options">
+                        <div class="upload-options">
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('photoInput').click()">
+                                <i class="fas fa-folder-open"></i>
+                                Choose File
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="startCameraBtn">
+                                <i class="fas fa-camera"></i>
+                                Use Camera
+                            </button>
+    
+                        </div>
+    
+                        <!-- Camera preview area (hidden initially) -->
+                        <div id="cameraContainer" style="display:none; margin-top:1rem;">
+                            <video id="video" autoplay playsinline width="320" height="240" style="border:1px solid #ccc;"></video>
+                            <br />
+                            <button type="button" class="btn btn-secondary" id="takePhotoBtn" style="margin-top: 0.5rem;">Take Photo</button>
+                            <button type="button" class="btn btn-outline" id="closeCameraBtn" style="margin-left:0.5rem;">Cancel</button>
+                            <canvas id="canvas" width="320" height="240" style="display:none; margin-top: 1rem; border:1px solid #ccc;"></canvas>
+                        </div>
+    
+                        <div class="image-preview" id="imagePreview" style="display: none; margin-top: 1rem;">
+                            <img id="previewImg" src="" alt="Preview" style="max-width: 100%; height: auto;">
+                            <div class="preview-actions">
+                                <button type="button" class="btn btn-outline" onclick="removeImage()">
+                                    <i class="fas fa-times"></i> Remove
+                                </button>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="upload-options">
+                        <div class="form-group">
+                            <label for="manual_barcode">Enter Barcode Number Manually</label>
+                            <input type="text" id="manual-barcode" name="manual-barcode" class="barcode-input" placeholder="123456789012" />
+                        </div>
+                        
+                    </div>
+                    <div class="upload-options">
+                        <div class="form-group">
+                            <label for="product_name">Search by Product Name</label>
+                            <input type="text" id="product_name" name="product_name" class="barcode-input" placeholder="e.g. Oat Milk" />
+                            <button type="button" class="btn btn-primary" id="searchProductBtn">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    
+                        <div class="form-group" id="productResultsContainer" style="display: none;">
+                            <label for="productResults">Select a Product</label>
+                            <select id="productResults" class="barcode-input">
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                        
+                        <input type="hidden" name="selected_barcode" id="selected_barcode">
+                    </div>
+                    </div>
+
+                    <div class="card-in-card">
+                        <div class="dashboard-form-header">
+                        <h3 class="dashboard-form-icon"><i class="fas fa-utensil-spoon"></i></h3>
+                        <h3>Dietary Habits</h3>
+                        </div>
+                        <div class="form-group full-width">
+                        <label for="dietary_style"><i class="fas fa-utensils"></i> Dietary Style</label>
+                        <textarea id="dietary_style" class="no-resize" name="dietary_style" rows="2" placeholder="e.g. Vegan, Keto (Optional)">{{ dietary_style or '' }}</textarea>
+                        </div>
+                    
+                        <div class="form-group">
+                        <label for="activity_level"><i class="fas fa-running"></i> Activity Level</label>
+                        <select id="activity_level" name="activity_level">
+                            <option value="" {% if not activity_level %}selected{% endif %}>Choose activity level</option>
+                            <option value="sedentary" {% if activity_level == 'sedentary' %}selected{% endif %}>Sedentary</option>
+                            <option value="light" {% if activity_level == 'light' %}selected{% endif %}>Lightly active</option>
+                            <option value="moderate" {% if activity_level == 'moderate' %}selected{% endif %}>Moderately active</option>
+                            <option value="active" {% if activity_level == 'active' %}selected{% endif %}>Active</option>
+                            <option value="very_active" {% if activity_level == 'very_active' %}selected{% endif %}>Very active</option>
+                        </select>
+                        </div>
+
+
+                        <div class="form-group full-width">
+                        <label for="dislikes"><i class="fas fa-ban"></i> Food Dislikes</label>
+                        <textarea id="dislikes" class="no-resize" name="dislikes" rows="2" placeholder="List foods you dislike (Optional)">{{ dislikes or '' }}</textarea>
+                        </div>
+                  </div>
+
+                <div class="card-in-card">
+                    <div class="dashboard-form-header">
+                      <h3 class="dashboard-form-icon"><i class="fas fa-heartbeat"></i></h3>
+                      <h3>Health Info</h3>
+                    </div>
+                    <div class="form-group full-width">
+                      <label for="clinical_conditions"><i class="fas fa-notes-medical"></i> Clinical Conditions</label>
+                      <textarea id="clinical_conditions" class="no-resize" name="clinical_conditions" rows="2" placeholder="e.g. Diabetes, High Blood Pressure (Optional)">{{ clinical_conditions or '' }}</textarea>
+                    </div>
+            
+                    <div class="form-group full-width">
+                      <label for="allergies"><i class="fas fa-allergies"></i> Allergies</label>
+                      <textarea id="allergies" class="no-resize" name="allergies" rows="2" placeholder="List specific allergens (Optional)">{{ allergies or '' }}</textarea>
+                    </div>
+            
+                    <div class="form-group full-width">
+                      <label for="intolerances"><i class="fas fa-exclamation-circle"></i> Intolerances</label>
+                      <textarea id="intolerances" class="no-resize" name="intolerances" rows="2" placeholder="e.g. Lactose, Gluten (Optional)">{{ intolerances or '' }}</textarea>
+                    </div>
+            
+                    <div class="form-group full-width">
+                      <label for="medications"><i class="fas fa-pills"></i> Medications</label>
+                      <textarea id="medications" class="no-resize" name="medications" rows="2" placeholder="List your regular medications (Optional)">{{ medications or '' }}</textarea>
+                    </div>
+                  </div>
+
+
+                  
+                  <div class="card-in-card">
+                    <div class="dashboard-form-header">
+                      <h3 class="dashboard-form-icon"><i class="fas fa-globe-americas"></i></h3>
+                      <h3>Sustainability Goals</h3>
+                    </div>
+                    <div class="form-group full-width">
+                      <label for="environmental_pref"><i class="fas fa-leaf"></i> Environmental Preference</label>
+                      <textarea id="environmental_pref" class="no-resize" name="environmental_pref" rows="2" placeholder="e.g. Low carbon, Local produce (Optional)">{{ environmental_pref or '' }}</textarea>
+                    </div>
+            
+                    <div class="form-group full-width">
+                      <label for="eco_score_concern_level"><i class="fas fa-seedling"></i> Eco Score Concern Level</label>
+                      <select id="eco_score_concern_level" name="eco_score_concern_level">
+                        <option value="" {% if not eco_score_concern_level %}selected{% endif %}>Choose concern level</option>
+                        <option value="low" {% if eco_score_concern_level == 'low' %}selected{% endif %}>Low</option>
+                        <option value="moderate" {% if eco_score_concern_level == 'moderate' %}selected{% endif %}>Moderate</option>
+                        <option value="high" {% if eco_score_concern_level == 'high' %}selected{% endif %}>High</option>
+                      </select>
+                    </div>
+                  </div>
+                    <button type="submit" class="btn btn-primary btn-large" id="analyzeBtn" style="margin-top: 1rem;">
+                        <i class="fas fa-magic"></i> Analyze Food
+                    </button>
+                </form>
+
+            </div>
+
+            <div class="upload-features">
+                <div class="feature-item">
+                    <i class="fas fa-zap"></i>
+                    <span>Instant Analysis</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Privacy Protected</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Optimized</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    const startCameraBtn = document.getElementById('startCameraBtn');
+    const video = document.getElementById('video');
+    const takePhotoBtn = document.getElementById('takePhotoBtn');
+    const closeCameraBtn = document.getElementById('closeCameraBtn');
+    const canvas = document.getElementById('canvas');
+    const photoInput = document.getElementById('photoInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImg = document.getElementById('previewImg');
+    const cameraContainer = document.getElementById('cameraContainer');
+    let stream;
+
+    startCameraBtn.addEventListener('click', async () => {
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+            video.srcObject = stream;
+            cameraContainer.style.display = 'block';
+            startCameraBtn.style.display = 'none';
+            // Hide existing preview if any
+            imagePreview.style.display = 'none';
+            previewImg.src = '';
+            photoInput.value = '';
+        } catch (err) {
+            alert('Camera access denied or not supported on this device.');
+        }
+    });
+
+    takePhotoBtn.addEventListener('click', () => {
+        // Draw current video frame to canvas
+        const context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        canvas.style.display = 'block';
+
+        // Stop camera stream after capturing photo
+        if (stream) {
+            stream.getTracks().forEach(track => track.stop());
+        }
+        video.srcObject = null;
+
+        // Convert canvas to blob and put it into file input as a File
+        canvas.toBlob(blob => {
+        const file = new File([blob], 'photo.png', { type: 'image/png' });
+
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        photoInput.files = dataTransfer.files;
+
+        // Trigger change event so validation works
+        photoInput.dispatchEvent(new Event('change', { bubbles: true }));
+
+        // Show preview image
+        previewImg.src = URL.createObjectURL(file);
+        imagePreview.style.display = 'block';
+    }, 'image/png');
+
+
+        // Hide camera container, show upload button
+        cameraContainer.style.display = 'none';
+        startCameraBtn.style.display = 'inline-block';
+    });
+
+    closeCameraBtn.addEventListener('click', () => {
+        // Stop camera if open
+        if (stream) {
+            stream.getTracks().forEach(track => track.stop());
+        }
+        video.srcObject = null;
+        cameraContainer.style.display = 'none';
+        startCameraBtn.style.display = 'inline-block';
+    });
+
+    function removeImage() {
+        photoInput.value = '';
+        previewImg.src = '';
+        imagePreview.style.display = 'none';
+    }
+
+    // Optional: Handle file input preview when choosing files normally
+    photoInput.addEventListener('change', () => {
+        if (photoInput.files && photoInput.files[0]) {
+            const file = photoInput.files[0];
+            previewImg.src = URL.createObjectURL(file);
+            imagePreview.style.display = 'block';
+
+            // Stop camera if it was running
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            video.srcObject = null;
+            cameraContainer.style.display = 'none';
+            startCameraBtn.style.display = 'inline-block';
+        }
+    });
+
+    document.getElementById('searchProductBtn').addEventListener('click', async () => {
+        const productName = document.getElementById('product_name').value;
+        if (!productName.trim()) return;
+    
+        const resultsContainer = document.getElementById('productResultsContainer');
+        const select = document.getElementById('productResults');
+        select.innerHTML = '<option>Searching...</option>';
+        resultsContainer.style.display = 'block';
+    
+        const query = encodeURIComponent(productName);
+        const response = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?search_terms=${query}&search_simple=1&action=process&json=1&page_size=5`);
+        const data = await response.json();
+    
+        select.innerHTML = '';
+        if (!data.products || data.products.length === 0) {
+            select.innerHTML = '<option>No products found</option>';
+            return;
+        }
+
+        for (const product of data.products) {
+            const name = product.product_name || 'Unnamed Product';
+            const barcode = product.code || '';
+            const brand = product.brands || '';
+            const label = `${name} (${brand}) [${barcode}]`;
+            const option = new Option(label, barcode);
+            select.appendChild(option);
+        }
+
+        // ✅ Immediately set hidden input to first product’s barcode
+        if (data.products.length > 0 && data.products[0].code) {
+            document.getElementById('selected_barcode').value = data.products[0].code;
+        }
+
+    });
+    
+    // Set selected barcode in hidden input
+    document.getElementById('productResults').addEventListener('change', function () {
+        const selectedBarcode = this.value;
+        document.getElementById('selected_barcode').value = selectedBarcode;
+    });
+    </script>
+    
+{% endblock %}

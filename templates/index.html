@@ -1,0 +1,312 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    <main>
+        <section class="hero-section">
+            <div class="hero-background">
+                <div class="floating-icons">
+                    <i class="fas fa-leaf"></i>
+                    <i class="fas fa-barcode"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-globe"></i>
+                    <i class="fas fa-apple-alt"></i>
+                </div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Transform Your</span>
+                    <span class="title-line gradient-text">Food Journey</span>
+                    <span class="title-line">With AI Intelligence</span>
+                </h1>
+                <p class="hero-subtitle">Discover how BiteWise revolutionizes the way you understand, choose, and enjoy your food</p>
+                <div class="hero-cta">
+                    <a href="/upload" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Start Your Journey
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <div class="scroll-text">Scroll to explore</div>
+            </div>
+        </section>
+        
+    <!-- Step 1: Scan -->
+    <section class="step-section scan-section" id="scan-section">
+        <div class="container">
+            <div class="step-content">
+                <div class="step-text">
+                    <h2 class="step-title">Simply Scan & Discover</h2>
+                    <p class="step-description">Point your camera at any food barcode and watch as BiteWise instantly reveals comprehensive insights about your food choices.</p>
+                    <div class="step-features">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt feature-icon"></i>
+                            <span>Instant Recognition</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-database feature-icon"></i>
+                            <span>Massive Food Database</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fas fa-robot feature-icon"></i>
+                            <span>Powerful LLM (Claude) </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="camera-viewfinder">
+                                <div class="scanning-overlay">
+                                    <div class="scan-line"></div>
+                                    <div class="corner corner-tl"></div>
+                                    <div class="corner corner-tr"></div>
+                                    <div class="corner corner-bl"></div>
+                                    <div class="corner corner-br"></div>
+                                </div>
+                                <div class="barcode-demo">
+                                    <div class="barcode-bars">
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                    </div>
+                                    <div class="barcode-number">8901030896952</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scan-particles"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Step 3: AI Analysis -->
+    <section class="step-section ai-section">
+        <div class="container">
+            <div class="step-content">
+                <div class="step-text">
+                    <h2 class="step-title">AI-Powered Insights</h2>
+                    <p class="step-description">Advanced AI analysis on your food choices and personalized recommendations for your health, diet goals, and environmental impact.</p>
+                    <div class="ai-capabilities">
+                        <div class="capability-item">
+                            <div class="capability-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="capability-content">
+                                <h4>Nutritional Analysis</h4>
+                                <p>Deep dive into macros, vitamins, and minerals</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="capability-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="capability-content">
+                                <h4>Health Impact</h4>
+                                <p>Personalized health recommendations based on your profile</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="capability-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="capability-content">
+                                <h4>Environmental Score</h4>
+                                <p>Carbon footprint and sustainability insights</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-visual">
+                    <div class="ai-visualization">
+                        <div class="ai-brain">
+                            <div class="brain-core">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="neural-network">
+                                <div class="neural-node"></div>
+                                <div class="neural-node"></div>
+                                <div class="neural-node"></div>
+                                <div class="neural-node"></div>
+                                <div class="neural-node"></div>
+                                <div class="neural-node"></div>
+                            </div>
+                            <div class="data-streams">
+                                <div class="data-stream"></div>
+                                <div class="data-stream"></div>
+                                <div class="data-stream"></div>
+                            </div>
+                        </div>
+                        <div class="analysis-results">
+                            <div class="result-card health">
+                                <div class="card-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="score2">85</div>
+                                    <div class="label2">Health Score</div>
+                                </div>
+                            </div>
+                            <div class="result-card nutrition">
+                                <div class="card-icon">
+                                    <i class="fas fa-apple-alt"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="score2">93</div>
+                                    <div class="label2">Nutrition Grade</div>
+                                </div>
+                            </div>
+                            <div class="result-card eco">
+                                <div class="card-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="score2">72</div>
+                                    <div class="label2">Eco Score</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+        <!-- Features Section -->
+    <section class="features2-showcase">
+        <div class="container">
+            <div class="showcase-header">
+                <h2 class="showcase-title">Why Choose BiteWise?</h2>
+                <p class="showcase-subtitle">Experience the future of food intelligence</p>
+            </div>
+            <div class="features2-grid">
+                <div class="feature2-card">
+                    <div class="feature2-icon-wrapper">
+                        <i class="fas fa-heart feature2-icon"></i>
+                    </div>
+                    <h3>Health Score</h3>
+                    <p>Get instant CleanEats and Health Ratings tailored to your personal health goals.</p>
+                </div>
+                <div class="feature2-card">
+                    <div class="feature2-icon-wrapper">
+                        <i class="fas fa-apple-alt feature2-icon"></i>
+                    </div>
+                    <h3>Nutrition Analysis</h3>
+                        <p>BiteWise supports better health by helping you track and improve your balanced nutritional intake.</p>
+                </div>
+                <div class="feature2-card">
+                    <div class="feature2-icon-wrapper">
+                        <i class="fas fa-globe feature2-icon"></i>
+                    </div>
+                    <h3>Environmental Impact</h3>
+                        <p>Set your sustainability goals and see the environmental impact of your food choices—based on what matters to you.</p>
+                </div>
+                <div class="feature2-card">
+                    <div class="feature2-icon-wrapper">
+                        <i class="fas fa-user-md feature2-icon"></i>
+                    </div>
+                    <h3>Personalized Insights</h3>
+                        <p>Custom recommendations based on your dietary restrictions and clinical conditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="stat-number">2.6M</div>
+                        <div class="stat-label">Global Food Products</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="stat-number">180+</div>
+                        <div class="stat-label">Countries Covered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Eco-Score Support</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-barcode"></i>
+                        </div>
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Barcode Detection Accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quotes Section -->
+        <section class="quotes-section">
+            <div class="container">
+                <div class="quote-carousel">
+                    <div class="quote-card active">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="quote-text">"Let food be thy medicine and medicine be thy food."</p>
+                        <div class="quote-author">— Hippocrates</div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="quote-text">"To eat is a necessity, but to eat intelligently is an art."</p>
+                        <div class="quote-author">— François de La Rochefoucauld</div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="quote-text">"The groundwork for all happiness is good health."</p>
+                        <div class="quote-author">— Leigh Hunt</div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="quote-text">"The greatest threat to our planet is the belief that someone else will save it."</p>
+                        <div class="quote-author">— Robert Swan</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your Eating Habits?</h2>
+                    <p>Join thousands of users who are making smarter food choices every day.</p>
+                    <a href="/upload" class="btn btn-primary btn-large">
+                        <i class="fas fa-arrow-right"></i>
+                        Get Started Now
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    {% endblock %}

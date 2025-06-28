@@ -1,0 +1,379 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main class="result-main">
+        <div class="container">
+            <div class="result-header">
+                <div class="result-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Analysis Complete</span>
+                    
+                </div>
+                <h1>Your Food Analysis Results</h1>
+                <p>Comprehensive insights about your food choice</p>
+            </div>
+
+
+            {% if error %}
+            <p class="error-message" style="color: #c0392b; margin-top: 1rem; font-weight: bold;">
+                {{ error }}
+            </p>
+          {% endif %}
+            <div class="result-content">
+                <div class="detail-card product-card">
+                    <div class="detail-header">
+                      <h2>
+                        <i class="fas fa-box-open"></i>
+                        Product Overview
+                      </h2>
+                    </div>
+                    <div class="product-card-body">
+                      <div class="product-image-wrap">
+                        <img src="{{ result.images.general }}" alt="{{ result.images.front }}" class="product-image" />
+                      </div>
+                      <div class="product-info">
+                        <h2 class="product-title">{{ result.product_name }}</h2>
+                        <h4 class="product-meta"><b><i class="fas fa-tag"></i> Brand:</b> {{ result.brands }}</h4>
+                        <h4 class="product-meta"><b><i class="fas fa-th-large"></i> Category:</b> {{ result.categories }}</h4>
+                        <h4 class="product-meta"><b><i class="fas fa-barcode"></i> Barcode:</b> {{ result.barcode }}</h4>
+                      </div>
+                    </div>
+                  </div>
+                  
+                <div class="extra-space">
+
+                </div>
+                <div class="score-cards">
+
+                    <div class="score-card nutrition">
+                        <div class="score-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <div class="score-info progress-item">
+                            <h3>Nutrition Score</h3>
+                            <div class="score-value progress-value">{{result.nutrition_score}}</div>
+                            <div class="score-label">
+                                {% if result.nutrition_score  %}
+                                {% if result.nutrition_score >= 90 %}
+                                    Outstanding Nutrition Quality
+                                {% elif result.nutrition_score >= 80 %}
+                                    Excellent Nutrition Quality
+                                {% elif result.nutrition_score >= 70 %}
+                                    Very Good Nutrition Quality
+                                {% elif result.nutrition_score >= 60 %}
+                                    Good Nutrition Quality
+                                {% elif result.nutrition_score >= 50 %}
+                                    Moderate Nutrition Quality
+                                {% elif result.nutrition_score >= 40 %}
+                                    Fair Nutrition Quality
+                                {% elif result.nutrition_score >= 30 %}
+                                    Low Nutrition Quality
+                                {% elif result.nutrition_score >= 20 %}
+                                    Poor Nutrition Quality
+                                {% elif result.nutrition_score >= 10 %}
+                                    Very Poor Nutrition Quality
+                                {% else %}
+                                    Unhealthy Nutrition Quality
+                                {% endif %}
+                                {% else %}
+                                Nutrition Quality Not Available
+                                {% endif %}
+                            </div>
+                            <div class="score-bar">
+                              <div class="score-fill progress-fill"></div>
+                          </div>
+                        </div>
+                        
+                        <div class="score-description insight-list">
+                          <span class="tooltip-icon" tabindex="0" aria-label="Click to show more" onclick="toggleDesc(this)">
+                              Click to Read More <i class="fas fa-info-circle"></i>
+                          </span>
+                          <div class="tooltip-content insight-item">
+                              <p>{{ result.nutrition_score_desc }}</p>
+                          </div>
+                        </div>
+
+                    </div>
+
+                    <div class="score-card health">
+                        <div class="score-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="score-info progress-item">
+                            <h3>Health Score</h3>
+                            <div class="score-value progress-value">{{result.health_score}}</div>
+                            <div class="score-label">
+                                {% if result.health_score %}
+                                {% if result.health_score >= 90 %}
+                                    Outstanding Health Score
+                                {% elif result.health_score >= 80 %}
+                                    Excellent Health Score
+                                {% elif result.health_score >= 70 %}
+                                    Very Good Health Score
+                                {% elif result.health_score >= 60 %}
+                                    Good Health Score
+                                {% elif result.health_score >= 50 %}
+                                    Moderate Health Score
+                                {% elif result.health_score >= 40 %}
+                                    Fair Health Score
+                                {% elif result.health_score >= 30 %}
+                                    Low Health Score
+                                {% elif result.health_score >= 20 %}
+                                    Poor Health Score
+                                {% elif result.health_score >= 10%}
+                                    Very Poor Health Score
+                                {% elif result.health_score>0%}
+                                    Unhealthy Choice
+                                {% endif %}
+                                {% else %}
+                                Health Score Not Available
+                                {% endif %}
+                            </div>
+                            <div class="score-bar">
+                              <div class="score-fill progress-fill"></div>
+                          </div>
+                        </div>
+                        
+                        <div class="score-description insight-list">
+                          <span class="tooltip-icon" tabindex="0" aria-label="Click to show more" onclick="toggleDesc(this)">
+                              Click to Read More <i class="fas fa-info-circle"></i>
+                          </span>
+                          <div class="tooltip-content insight-item">
+                              <p>{{ result.health_score_desc }}</p>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="score-card environment">
+                        <div class="score-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="score-info progress-item">
+                            <h3>Environmental Impact</h3>
+                            <div class="score-value progress-value">
+                              {% if result.ecoscore_score is not none %}
+                                {{ result.ecoscore_score }}
+                              {% else %}
+                                N/A
+                              {% endif %}
+                            </div>
+                            <div class="score-label">
+                                {% if result.ecoscore_score %}
+                                {% if result.ecoscore_score >= 90 %}
+                                  Outstanding Eco-Friendly Choice
+                                {% elif result.ecoscore_score >= 80 %}
+                                  Excellent Eco-Friendly Choice
+                                {% elif result.ecoscore_score >= 70 %}
+                                  Very Good Eco-Friendly Choice
+                                {% elif result.ecoscore_score >= 60 %}
+                                  Good Eco-Friendly Choice
+                                {% elif result.ecoscore_score >= 50 %}
+                                  Moderate Eco-Friendliness
+                                {% elif result.ecoscore_score >= 40 %}
+                                  Fair Eco-Friendliness
+                                {% elif result.ecoscore_score >= 30 %}
+                                  Low Eco-Friendliness
+                                {% elif result.ecoscore_score >= 20 %}
+                                  Poor Eco-Friendliness
+                                {% elif result.ecoscore_score >= 10%}
+                                  Very Poor Eco-Friendliness
+                                {% elif result.health_score>0%}
+                                  Not Eco-Friendly
+                                {% endif %}
+                              {% else %}
+                                Not Available
+                              {% endif %}
+                              
+                            </div>
+                            <div class="score-bar">
+                              <div class="score-fill progress-fill"></div>
+                          </div>
+                          </div>
+
+                        <div class="score-description insight-list">
+                          <span class="tooltip-icon" tabindex="0" aria-label="Click to show more" onclick="toggleDesc(this)">
+                              Click to Read More <i class="fas fa-info-circle"></i>
+                          </span>
+                          <div class="tooltip-content insight-item">
+                              <p>{{ result.eco_score_desc }}</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-details">
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <h3>
+                                <i class="fas fa-chart-pie"></i>
+                                Nutritional Breakdown (/100g)
+                            </h3>
+                        </div>
+                        <div class="nutrition-grid">
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Calories</span>
+                                <span class="nutrition-value">{{result.nutriments.energy_kcal_100g}}kcal</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Protein</span>
+                                <span class="nutrition-value">{{result.nutriments.proteins_100g}}g</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Carbs</span>
+                                <span class="nutrition-value">{{result.nutriments.carbohydrates_100g}}g</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Fat</span>
+                                <span class="nutrition-value">{{result.nutriments.fat_100g}}g</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Fiber</span>
+                                <span class="nutrition-value">{{result.nutriments.fiber_100g}}g</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Sugar</span>
+                                <span class="nutrition-value">{{result.nutriments.sugars_100g}}g</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <h3>
+                                <i class="fas fa-user-md"></i>
+                                Personalized Insights
+                            </h3>
+                        </div>
+                        <div class="insights-list">
+                            {%if result.other_info%}
+                            {% for warning in result.other_info.split(';') %}
+                            <div class="insight-item">
+                                {%if warning[0].lower() == 'l'%}
+                                <i class="fas fa-check-circle insight-icon success"></i>
+                                {%elif warning[0].lower() == 'm'%}
+                                <i class="fas fa-star insight-icon info"></i>
+                                {%else%}
+                                <i class="fas fa-exclamation-triangle insight-icon warning"></i>
+                                {%endif%}
+                                <p>{{warning[1:]}}</p>
+                            </div>
+                            {% endfor %}
+                            {%else%}
+                            <div class="insight-item">
+                                
+                                <i class="fas fa-star insight-icon info"></i>
+                                <p>Sorry, information not available</p>
+                            </div>
+                            {%endif%}
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <div class="detail-header">
+                            <h3>
+                                <i class="fas fa-globe"></i>
+                                Environmental Impact
+                            </h3>
+                        </div>
+                        <div class="environment-stats">
+                            <div class="env-stat">
+                                <div class="env-icon">
+                                    <i class=" green-emoji fas">🦶</i>
+                                </div><div class="env-info">
+                                    {% if result.agribalyse_co2_total%}
+                                      <span class="env-value">{{ result.agribalyse_co2_total or result.co2_footprint }} kg</span>
+                                      <span class="env-label">Lifecycle CO₂ Footprint</span>
+                                    {% elif result.carbon_footprint_100g%}
+                                      <span class="env-value">{{ result.carbon_footprint_100g }} kg</span>
+                                      <span class="env-label">CO₂ Footprint per 100g</span>
+                                    {% else %}
+                                      <span class="env-value">Not Available</span>
+                                      <span class="env-label">CO₂ Footprint</span>
+                                    {% endif %}
+                                  </div>
+                            </div>
+                            <div class="env-stat">
+                                <div class="env-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="env-info">
+                                    {% if result.water_usage %}
+                                    <span class="env-value">{{result.water_usage}} L</span>
+                                    {% else %}
+                                    <span class="env-value">Not Available</span>
+                                    {% endif %}
+                                    <span class="env-label">Water Usage</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% set co2 = result.agribalyse_co2_total %}
+                        {% set water = result.water_usage %}
+                        
+                        <p class="env-message">
+                          {% if co2 %}
+                            {% if co2 < 2000 %}
+                              This product has a <strong>low</strong> carbon footprint.
+                            {% elif co2 < 10000 %}
+                              This product has a <strong>moderate</strong> carbon footprint.
+                            {% else %}
+                              This product has a <strong>high</strong> carbon footprint.
+                            {% endif %}
+                          {% elif water %}
+                            {% if water < 1000 %}
+                              This product has a <strong>low</strong> water usage.
+                            {% elif water < 5000 %}
+                              This product has a <strong>moderate</strong> water usage.
+                            {% else %}
+                              This product has a <strong>high</strong> water usage.
+                            {% endif %}
+                          {% else %}
+                            Environmental impact data not available.
+                          {% endif %}
+                        </p>
+                        
+                    </div>
+                </div>
+                
+                <div class="dashboard-card insights-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-box"></i> Storage Instruction</h3>
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="card-content ">
+                      {% if result.conservation_conditions%}
+                      {% for condition in result.conservation_conditions.split(';') %}
+                      <div class="insight-item">
+                          {%if condition[0].lower() == 'l'%}
+                          <i class="fas fa-check-circle insight-icon success"></i>
+                          {%elif condition[0].lower() == 'm'%}
+                          <i class="fas fa-star insight-icon info"></i>
+                          {%else%}
+                          <i class="fas fa-exclamation-triangle insight-icon warning"></i>
+                          {%endif%}
+                          <p>{{condition[1:]}}</p>
+                      </div>
+                      {% endfor %}
+                      {%else%}
+                      <div class="insight-item">
+                          <i class="fas fa-star insight-icon info"></i>
+                          <p>No details available</p>
+                      </div>
+                      {%endif%}
+                    </div>
+                </div>
+                <div class="result-actions">
+                  <form action="{{ url_for('upload') }}">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-camera"></i>
+                      Analyze Another</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+      function toggleDesc(icon) {
+          const content = icon.nextElementSibling;
+          content.classList.toggle('visible');
+      }
+      </script>
+      
+    {% endblock %}

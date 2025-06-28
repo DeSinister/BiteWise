@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BiteWise - Your Personalized Food Analysis Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+</head>
+<body><nav class="navbar" role="navigation" aria-label="Primary Navigation">
+    <div class="nav-container">
+      <!-- Brand -->
+      <div class="nav-brand">
+        <a href="/" class="nav-link brand-link">
+          <i class="fas fa-leaf nav-icon" aria-hidden="true"></i>
+          <span class="brand-text">BiteWise</span>
+        </a>
+      </div>
+  
+        <!-- Hamburger Toggle Button -->
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+          </button>
+      <!-- Navigation Links -->
+      <div class="nav-links" id="nav-menu">
+       
+        <a href="/upload" class="nav-link {% if request.path == '/upload' %}active{% endif %}">
+          <i class="fas fa-camera"></i>
+          <span>Scan</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  
+
+  {% block content %}{% endblock %}
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
