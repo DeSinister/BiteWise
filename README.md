@@ -6,7 +6,7 @@ A web-based dietary assistant that analyzes food products based on barcodes or u
 
 ## Project Structure
 
-``
+```
 .
 ├── app.py              # Main Flask application
 ├── requirements.txt    # Python dependencies
@@ -20,7 +20,7 @@ A web-based dietary assistant that analyzes food products based on barcodes or u
 │   ├── result.html
 │   └── upload.html
 
-``
+```
 
 ---
 
