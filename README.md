@@ -1,4 +1,4 @@
-# BiteWise: Flask Dietary Assistant
+# BiteWise: AI Dietary Assistant
 
 A web-based dietary assistant that analyzes food products based on barcodes or uploaded images. It provides nutritional, health, and environmental scores, along with warnings based on the user's dietary profile.
 
@@ -6,18 +6,21 @@ A web-based dietary assistant that analyzes food products based on barcodes or u
 
 ## Project Structure
 
+``
 .
-├── app.py # Main Flask application
-├── requirements.txt # Python dependencies
-├── Dockerfile # Docker setup
-├── static # Static assets
-│ ├── script.js
-│ └── style.css
-├── templates # HTML templates
-│ ├── base.html
-│ ├── index.html
-│ ├── result.html
-│ └── upload.html
+├── app.py              # Main Flask application
+├── requirements.txt    # Python dependencies
+├── Dockerfile          # Docker setup
+├── static              # Static assets
+│   ├── script.js
+│   └── style.css
+├── templates           # HTML templates
+│   ├── base.html
+│   ├── index.html
+│   ├── result.html
+│   └── upload.html
+
+``
 
 ---
 
