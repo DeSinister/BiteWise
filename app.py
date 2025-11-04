@@ -16,7 +16,12 @@ app.secret_key = os.environ.get('SECRET_KEY', 'fallback_secret_if_not_set')
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 app.config['UPLOAD_FOLDER'] = os.path.join(BASE_DIR, 'static', 'uploads')
-client = anthropic.Anthropic(api_key=os.environ.get('CLAUDE_API_KEY', 'CLAUDE_KEY2'))
+
+# Check for API key
+api_key = os.environ.get('CLAUDE_API_KEY') or os.environ.get('ANTHROPIC_API_KEY')
+if not api_key:
+    print("WARNING: No Claude API key found. Set CLAUDE_API_KEY or ANTHROPIC_API_KEY environment variable.")
+client = anthropic.Anthropic(api_key=api_key) if api_key else None
 
 # Initialize DB once on startup
 def round_sig(x, sig=2):
@@ -322,18 +327,33 @@ def upload():
         prompt = construct_dietary_prompt(user_dietary_profile, info)
         print("GOT THIS PROMPT: ", prompt)
         try:
+            if not client:
+                raise Exception("Claude API client not initialized. Please set CLAUDE_API_KEY environment variable.")
+            
             llm_response = client.messages.create(
-                    model="claude-sonnet-4-5-20250929",
+                    model="claude-sonnet-4-20250514",
                     max_tokens=1024,
                     messages=[{
                         "role": "user",
                         "content": prompt
                     }]
                 )
-            llm_powered_scores = llm_response.content[0].text
-            llm_powered_scores = json.loads(llm_powered_scores)
+            response_text = llm_response.content[0].text
+            print("RAW RESPONSE: ", response_text)
+            
+            # Strip markdown code blocks if present
+            if "```json" in response_text:
+                response_text = response_text.split("```json")[1].split("```")[0].strip()
+            elif "```" in response_text:
+                response_text = response_text.split("```")[1].split("```")[0].strip()
+            
+            llm_powered_scores = json.loads(response_text)
             print("GOT THIS RESPONSE: ", llm_powered_scores, type(llm_powered_scores))
         except Exception as e:
+            print(f"ERROR in AI processing: {type(e).__name__}: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            
             info['nutrition_score'] = info['tabulated_score']
             info['nutrition_score_desc'] = "Sorry, information not available"
             info['health_score'] = 0
@@ -343,7 +363,7 @@ def upload():
             if type(info['conservation_conditions']) == list:
                 info['conservation_conditions'] = 'm'+ ', '.join(info['conservation_conditions'])
             info['other_info'] = ""
-            return render_template('result.html', result=info, error=f"Sorry AI insights not available {e}")
+            return render_template('result.html', result=info, error=f"Sorry, AI insights not available. Please check if CLAUDE_API_KEY is set.")
         # llm_powered_scores =  {
         #     "warnings": [
         #             {
