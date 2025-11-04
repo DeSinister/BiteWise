@@ -323,7 +323,7 @@ def upload():
         print("GOT THIS PROMPT: ", prompt)
         try:
             llm_response = client.messages.create(
-                    model="claude-3-5-sonnet-20240620",
+                    model="claude-sonnet-4-5-20250929",
                     max_tokens=1024,
                     messages=[{
                         "role": "user",
