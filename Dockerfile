@@ -1,8 +1,8 @@
 FROM python:3.11-slim
 
-# Install Java 17 instead of Java 11 (pyzxing works fine with it)
+# Install Java 21 (pyzxing works fine with it)
 RUN apt-get update && \
-    apt-get install -y openjdk-17-jre-headless && \
+    apt-get install -y openjdk-21-jre-headless && \
     pip install --upgrade pip && \
     rm -rf /var/lib/apt/lists/*
 
