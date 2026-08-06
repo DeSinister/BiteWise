@@ -72,9 +72,14 @@ def compute_nutrition_score(nutriments, nutri_score=None):
     return nutrition_score
 
 
+OFF_HEADERS = {
+    "User-Agent": "BiteWise/1.0 (https://bitewise-min.onrender.com; food analysis app)",
+}
+
+
 def fetch_product_info(barcode):
     url = f"https://world.openfoodfacts.org/api/v0/product/{barcode}.json"
-    response = requests.get(url)
+    response = requests.get(url, headers=OFF_HEADERS, timeout=15)
 
     if response.status_code != 200:
         return {"error": "Failed to fetch product"}
@@ -331,14 +336,18 @@ def upload():
                 raise Exception("Claude API client not initialized. Please set CLAUDE_API_KEY environment variable.")
             
             llm_response = client.messages.create(
-                    model="claude-sonnet-4-20250514",
-                    max_tokens=1024,
+                    model="claude-sonnet-5",
+                    max_tokens=4096,
                     messages=[{
                         "role": "user",
                         "content": prompt
                     }]
                 )
-            response_text = llm_response.content[0].text
+            response_text = "".join(
+                block.text for block in llm_response.content if getattr(block, "type", None) == "text"
+            ).strip()
+            if not response_text:
+                raise ValueError("No text content returned from Claude.")
             print("RAW RESPONSE: ", response_text)
             
             # Strip markdown code blocks if present
