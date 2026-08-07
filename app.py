@@ -212,6 +212,7 @@ def check_existing_log(barcode_number, logs):
 
 
 def construct_dietary_prompt(user_profile: dict, product_profile_dict) -> str:
+    activity_level = user_profile.get("activity_level", "none")
     clinical_conditions = user_profile.get("clinical_conditions", "none")
     medications = user_profile.get("medications", "none")
     dietary_style = user_profile.get("dietary_style", "none")
@@ -223,9 +224,10 @@ def construct_dietary_prompt(user_profile: dict, product_profile_dict) -> str:
     product_input = product_profile_dict.copy()
     product_input.pop('images', None)
     prompt = f"""
-You are a dietary assistant. A user has specific health conditions and preferences. Based on the provided product data, analyze the product and return structured JSON insights.
+You are a clinical dietary safety assistant. A user has specific health conditions and preferences. Based on the provided product data, analyze the product and return structured JSON insights.
 
 User Profile:
+* Activity Level: {activity_level}
 * Conditions: {clinical_conditions}
 * Medications: {medications}
 * Diet: {dietary_style}
@@ -236,19 +238,38 @@ User Profile:
 * Environmental Concern Level: {eco_score_concern_level}
 
 Product: {product_input}
+
 Instructions:
-1. Use OpenFoodFacts fields wherever possible.
-2. If a value is missing, incomplete, or in another language, use general knowledge to estimate.
-3. Base environmental score on factors such as packaging, food origin, processing level, ingredient type, etc., if CO2/water data is unavailable.
+1. Use OpenFoodFacts fields wherever possible (ingredients_text, allergens, allergens_tags, nutriments, nova_group, ecoscore).
+2. If a value is missing, incomplete, or in another language, use general knowledge to estimate and say so in the reason.
+3. Base environmental score on packaging, origin, processing level, and ingredient type when CO2/water data is unavailable.
 4. For each score (nutrition, health, environment), select exactly one category from the provided list.
-5. In each reason, briefly justify the score. Mention if you estimated something due to missing info.
-6. Consider ingredients, allergens, additives only if they conflict with the user's allergies, dislikes, diet, health conditions, or medications.
-7. Do not flag common allergens like soy, milk, nuts unless they conflict with the user profile.
-8. Treat all health conditions and medications seriously and holistically. Identify any nutrients or ingredients that could pose risks or require caution based on:
-   - Possible dietary restrictions or nutrient limitations common to the conditions or medications.
-   - Known interactions between nutrients and medications (e.g., potassium with certain blood pressure drugs).
-9. Provide warnings or advice related to any such conflicts or potential risks, with severity levels (low, med, high).
-10. Include warnings related to allergies, dislikes, or preferences only if applicable.
+5. In each reason, briefly justify the score and mention profile-specific risks when relevant.
+
+CRITICAL SAFETY RULES (mandatory):
+A. ALLERGIES: If the product contains, may contain, or likely contains any listed allergen, add a "warnings" entry with lvl "h". Name the allergen and the ingredient source. Never skip a true allergy match.
+B. INTOLERANCES: If the product conflicts with a listed intolerance (e.g., lactose + dairy), add a "warnings" entry with lvl "m" or "h".
+C. MEDICATIONS: If medications are listed, check for known nutrient/ingredient interactions and warn explicitly:
+   - Metformin / insulin / diabetes meds + high sugar → lvl "m" or "h", cite glucose impact
+   - Warfarin + vitamin K-rich foods (leafy greens, some fortified grains) → lvl "m" or "h"
+   - ACE inhibitors / ARBs + high potassium foods → lvl "m"
+   - MAO inhibitors + tyramine-rich aged/fermented foods → lvl "h"
+   - Statins + grapefruit → lvl "h"
+   - Lithium + low-sodium or high-sodium swings → lvl "m"
+D. CLINICAL CONDITIONS: Warn when the product conflicts with listed conditions:
+   - Diabetes / prediabetes + high sugar or refined carbs → lvl "m" or "h"
+   - Celiac / gluten sensitivity + wheat, barley, rye, gluten → lvl "h"
+   - Hypertension + high sodium → lvl "m"
+   - Heart disease / high cholesterol + high saturated fat or trans fat → lvl "m"
+   - Kidney disease + high potassium, phosphorus, or protein load → lvl "m"
+   - Gout + high purine / organ meats / heavy alcohol bases → lvl "m"
+E. DIET STYLE: Vegan, vegetarian, keto, halal, paleo, etc. → warn on direct conflicts (lvl "m").
+F. DISLIKES / ENVIRONMENTAL PREFS: warn only when applicable (lvl "l" or "m").
+G. If allergies, intolerances, medications, or conditions are empty/none, do not invent medical warnings.
+H. When any rule A–E applies, you MUST include at least one entry in "warnings". Safety warnings belong in "warnings", not only in score reasons.
+I. Severity guide: "h" = immediate safety (allergy, dangerous interaction), "m" = significant clinical/diet conflict, "l" = minor preference mismatch.
+J. Do not flag soy, milk, nuts, etc. unless they appear in the user profile or conflict with diet/conditions.
+
 11. Return ONLY JSON in the format:
 
 {{
