@@ -67,7 +67,7 @@ def compute_nutrition_score(nutriments, nutri_score=None):
     raw_score = negative_points - positive_points  # lower = better
     raw_score = clamp(raw_score, 0, 40)  # Assume max 40 bad
 
-    # Invert and scale to 20–80
+    # Invert and scale to 20-80
     nutrition_score = round(20 + (40 - raw_score) / 40 * 60)
     return nutrition_score
 

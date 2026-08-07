@@ -20,7 +20,7 @@
                 </h1>
                 <p class="hero-subtitle">Discover how BiteWise revolutionizes the way you understand, choose, and enjoy your food</p>
                 <div class="hero-cta">
-                    <a href="/upload" class="btn btn-primary">
+                    <a href="/upload#scan-form" class="btn btn-primary">
                         <i class="fas fa-rocket"></i>
                         Start Your Journey
                     </a>
@@ -182,131 +182,139 @@
 
 
 
-        <!-- Features Section -->
-    <section class="features2-showcase">
+    <!-- Under the hood -->
+    <section class="about-stack">
         <div class="container">
-            <div class="showcase-header">
-                <h2 class="showcase-title">Why Choose BiteWise?</h2>
-                <p class="showcase-subtitle">Experience the future of food intelligence</p>
+            <header class="about-stack-header">
+                <span class="about-kicker">Under the hood</span>
+                <h2 class="about-stack-title">Real data in. Personalized scores out.</h2>
+                <p class="about-stack-lead">No fake dashboards. Just barcode lookup, your health profile, and Claude doing the analysis.</p>
+            </header>
+
+            <div class="about-pipeline">
+                <article class="pipeline-step">
+                    <div class="pipeline-num">01</div>
+                    <div class="pipeline-body">
+                        <h3>Capture</h3>
+                        <p>Camera scan, photo upload, manual barcode, or search by product name.</p>
+                    </div>
+                    <div class="pipeline-icon"><i class="fas fa-barcode"></i></div>
+                </article>
+                <div class="pipeline-connector" aria-hidden="true"></div>
+                <article class="pipeline-step">
+                    <div class="pipeline-num">02</div>
+                    <div class="pipeline-body">
+                        <h3>Lookup</h3>
+                        <p>Ingredients, nutrition, and eco data pulled from Open Food Facts.</p>
+                    </div>
+                    <div class="pipeline-icon"><i class="fas fa-database"></i></div>
+                </article>
+                <div class="pipeline-connector" aria-hidden="true"></div>
+                <article class="pipeline-step">
+                    <div class="pipeline-num">03</div>
+                    <div class="pipeline-body">
+                        <h3>Analyze</h3>
+                        <p>Claude scores the product against your diet, allergies, meds, and sustainability prefs.</p>
+                    </div>
+                    <div class="pipeline-icon"><i class="fas fa-brain"></i></div>
+                </article>
             </div>
-            <div class="features2-grid">
-                <div class="feature2-card">
-                    <div class="feature2-icon-wrapper">
-                        <i class="fas fa-heart feature2-icon"></i>
+
+            <div class="about-bento">
+                <div class="bento-card bento-wide">
+                    <i class="fas fa-heart-pulse"></i>
+                    <div>
+                        <h4>Profile-aware</h4>
+                        <p>Allergies, intolerances, clinical conditions, and medications actually change the output, not just generic nutrition tips.</p>
                     </div>
-                    <h3>Health Score</h3>
-                    <p>Get instant CleanEats and Health Ratings tailored to your personal health goals.</p>
                 </div>
-                <div class="feature2-card">
-                    <div class="feature2-icon-wrapper">
-                        <i class="fas fa-apple-alt feature2-icon"></i>
+                <div class="bento-card">
+                    <i class="fas fa-leaf"></i>
+                    <div>
+                        <h4>Eco scoring</h4>
+                        <p>Environmental impact weighted by how much you care.</p>
                     </div>
-                    <h3>Nutrition Analysis</h3>
-                        <p>BiteWise supports better health by helping you track and improve your balanced nutritional intake.</p>
                 </div>
-                <div class="feature2-card">
-                    <div class="feature2-icon-wrapper">
-                        <i class="fas fa-globe feature2-icon"></i>
+                <div class="bento-card">
+                    <i class="fas fa-bolt"></i>
+                    <div>
+                        <h4>Live stack</h4>
+                        <p>Flask · Open Food Facts · Claude · deployed on Render.</p>
                     </div>
-                    <h3>Environmental Impact</h3>
-                        <p>Set your sustainability goals and see the environmental impact of your food choices—based on what matters to you.</p>
-                </div>
-                <div class="feature2-card">
-                    <div class="feature2-icon-wrapper">
-                        <i class="fas fa-user-md feature2-icon"></i>
-                    </div>
-                    <h3>Personalized Insights</h3>
-                        <p>Custom recommendations based on your dietary restrictions and clinical conditions.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-        <!-- Stats Section -->
-        <section class="stats-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-database"></i>
+    <!-- Built by -->
+    <section class="about-creator">
+        <div class="container">
+            <div class="creator-card">
+                <div class="creator-main">
+                    <div class="creator-avatar" aria-hidden="true">ND</div>
+                    <div class="creator-copy">
+                        <span class="about-kicker">Built by</span>
+                        <h2 class="creator-name">Nishq Desai</h2>
+                        <p class="creator-role">Applied ML Engineer · Toronto</p>
+                        <p class="creator-bio">
+                            BiteWise is a full-stack portfolio project: barcode vision, product lookup, and LLM-powered scoring in one app.
+                            I build production ML systems; this is the demo I actually want to show recruiters.
+                        </p>
+                        <div class="creator-creds">
+                            <span class="cred-pill">WACV published</span>
+                            <span class="cred-pill">ICPR accepted</span>
+                            <span class="cred-pill">100+ citations</span>
+                            <span class="cred-pill">4+ yrs prod ML</span>
                         </div>
-                        <div class="stat-number">2.6M</div>
-                        <div class="stat-label">Global Food Products</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-globe"></i>
+                        <div class="creator-links">
+                            <a href="https://desinister.github.io" target="_blank" rel="noopener noreferrer" class="creator-link creator-link-primary">
+                                <i class="fas fa-globe"></i> Portfolio
+                            </a>
+                            <a href="https://github.com/DeSinister" target="_blank" rel="noopener noreferrer" class="creator-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/nishq/" target="_blank" rel="noopener noreferrer" class="creator-link">
+                                <i class="fab fa-linkedin-in"></i> LinkedIn
+                            </a>
+                            <a href="https://scholar.google.ca/citations?user=m2uTpYIAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" class="creator-link">
+                                <i class="fas fa-graduation-cap"></i> Scholar
+                            </a>
+                            <a href="mailto:n.desai@queensu.ca" class="creator-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
                         </div>
-                        <div class="stat-number">180+</div>
-                        <div class="stat-label">Countries Covered</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <div class="stat-number">85%</div>
-                        <div class="stat-label">Eco-Score Support</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-barcode"></i>
-                        </div>
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Barcode Detection Accuracy</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quotes Section -->
-        <section class="quotes-section">
-            <div class="container">
-                <div class="quote-carousel">
-                    <div class="quote-card active">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="quote-text">"Let food be thy medicine and medicine be thy food."</p>
-                        <div class="quote-author">— Hippocrates</div>
-                    </div>
-                    <div class="quote-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="quote-text">"To eat is a necessity, but to eat intelligently is an art."</p>
-                        <div class="quote-author">— François de La Rochefoucauld</div>
-                    </div>
-                    <div class="quote-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="quote-text">"The groundwork for all happiness is good health."</p>
-                        <div class="quote-author">— Leigh Hunt</div>
-                    </div>
-                    <div class="quote-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="quote-text">"The greatest threat to our planet is the belief that someone else will save it."</p>
-                        <div class="quote-author">— Robert Swan</div>
                     </div>
                 </div>
+                <aside class="creator-aside">
+                    <div class="creator-stat">
+                        <span class="creator-stat-val">CV + NLP</span>
+                        <span class="creator-stat-label">Research background</span>
+                    </div>
+                    <div class="creator-stat">
+                        <span class="creator-stat-val">End-to-end</span>
+                        <span class="creator-stat-label">Designed, built &amp; deployed solo</span>
+                    </div>
+                    <div class="creator-stat">
+                        <span class="creator-stat-val">Open to work</span>
+                        <span class="creator-stat-label">ML / AI engineering roles</span>
+                    </div>
+                </aside>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to Transform Your Eating Habits?</h2>
-                    <p>Join thousands of users who are making smarter food choices every day.</p>
-                    <a href="/upload" class="btn btn-primary btn-large">
-                        <i class="fas fa-arrow-right"></i>
-                        Get Started Now
-                    </a>
-                </div>
+    <!-- CTA -->
+    <section class="about-cta">
+        <div class="container">
+            <div class="about-cta-inner">
+                <h2>Grab something from your pantry and try it.</h2>
+                <p>Scan a barcode or search by name. Takes about 30 seconds.</p>
+                <a href="/upload#scan-form" class="btn btn-primary btn-large">
+                    <i class="fas fa-arrow-right"></i>
+                    Scan your first item
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
     </main>
     {% endblock %}

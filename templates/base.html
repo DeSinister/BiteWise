@@ -30,8 +30,11 @@
           </button>
       <!-- Navigation Links -->
       <div class="nav-links" id="nav-menu">
-       
-        <a href="/upload" class="nav-link {% if request.path == '/upload' %}active{% endif %}">
+        <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+          <i class="fas fa-info-circle"></i>
+          <span>About</span>
+        </a>
+        <a href="/upload#scan-form" class="nav-link {% if request.path == '/upload' %}active{% endif %}">
           <i class="fas fa-camera"></i>
           <span>Scan</span>
         </a>

@@ -1,5 +1,42 @@
 
-// Navigation active state management
+// Scroll to scan form (navbar Scan, Start Your Journey, Get Started Now)
+function scrollToScanForm(behavior = 'smooth') {
+    const form = document.getElementById('scan-form');
+    if (form) {
+        form.scrollIntoView({ behavior, block: 'start' });
+    }
+}
+
+function isUploadPage() {
+    const path = window.location.pathname;
+    return path === '/upload' || path.endsWith('/upload');
+}
+
+function initScanFormScroll() {
+    if (window.location.hash === '#scan-form') {
+        requestAnimationFrame(() => scrollToScanForm());
+    }
+
+    document.querySelectorAll('a[href="/upload#scan-form"], a[href$="#scan-form"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (isUploadPage()) {
+                e.preventDefault();
+                history.pushState(null, '', '#scan-form');
+                scrollToScanForm();
+                const navMenu = document.getElementById('nav-menu');
+                const hbBtn = document.getElementById('hamburger-btn');
+                if (navMenu) navMenu.classList.remove('show');
+                if (hbBtn) hbBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initScanFormScroll);
+window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#scan-form') scrollToScanForm();
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // Set active navigation link based on current page
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -107,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const authForms = document.querySelectorAll('.login-form, .signup-form');
 authForms.forEach(form => {
     form.addEventListener('submit', function (e) {
-        // Do nothing — let the browser and Flask handle the POST
+        // Do nothing; let the browser and Flask handle the POST
     });
 });
 const uploadForms = document.querySelectorAll('.upload-form');
@@ -476,7 +513,7 @@ const observer = new IntersectionObserver((entries) => {
 // Observe all step sections and feature containers
 document.addEventListener('DOMContentLoaded', function() {
     // Observe sections for scroll animations
-    const sections = document.querySelectorAll('.step-section, .features-showcase, .cta-section');
+    const sections = document.querySelectorAll('.step-section, .features-showcase, .about-stack, .about-creator, .about-cta, .cta-section');
     sections.forEach(section => {
         observer.observe(section);
     });
